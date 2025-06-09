@@ -6,10 +6,17 @@ A minimal pygame example project with
 - a test suite
 - code as a library and small main file
 
-This project was managed with the uv project manager. Run this game on the web with
+This project is managed with the [uv](https://docs.astral.sh/uv/) project manager.
+After installation, run this game in your browser with
 
 ```
 uv run pygbag --icon src/assets/favicon.png src/main.py
+```
+
+or traditionally with
+
+```
+cd src; uv run main.py; cd ..
 ```
 
 Run the unit tests with
