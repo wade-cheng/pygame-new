@@ -1,6 +1,6 @@
 # pygame-new
 
-A minimal pygame example project with
+A general-purpose minimal pygame example project with
 
 - pygbag support
 - a test suite
