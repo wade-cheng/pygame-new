@@ -1,3 +1,4 @@
+from typing import Any
 import pygame
 from pygame.sprite import Group
 import asyncio
@@ -38,9 +39,12 @@ class Game:
             ]
         )
 
-        self.balloons: Group[Balloon] = Group(
-            Balloon(hp=3), Balloon(hp=2), Balloon(hp=1)
-        )
+        # This must be type annotated `Any` for now, because of current issues
+        # in pygame-ce's type hinting. This is being fixed in the future.
+        #
+        # In an ideal world, we would use `Group[Balloon]` to provide better
+        # editor integration.
+        self.balloons: Group[Any] = Group(Balloon(hp=3), Balloon(hp=2), Balloon(hp=1))
 
     async def run(self):
         while self.running:

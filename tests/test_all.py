@@ -5,7 +5,6 @@ from pygame_new.game_objects import Balloon
 
 class TestBalloonHitboxes:
     def test_a_clicked_balloon_should_pop(self):
-        # TODO are we supposed to annotate these?
         # arrange
         b = Balloon(top=0, left=0, hp=3)
 
