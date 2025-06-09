@@ -11,7 +11,7 @@ from pygame_new.constants import WINDOW_WIDTH, WINDOW_HEIGHT, FPS
 
 
 class Game:
-    def __init__(self):
+    def __init__(self) -> None:
         pygame.init()
 
         pygame.display.set_caption("pygame-new")
@@ -46,7 +46,7 @@ class Game:
         # editor integration.
         self.balloons: Group[Any] = Group(Balloon(hp=3), Balloon(hp=2), Balloon(hp=1))
 
-    async def run(self):
+    async def run(self) -> None:
         while self.running:
             self.update()
             self.draw()
@@ -55,7 +55,7 @@ class Game:
 
         pygame.quit()
 
-    def update(self):
+    def update(self) -> None:
         x, y = pygame.mouse.get_pos()
 
         for event in pygame.event.get():
@@ -69,7 +69,7 @@ class Game:
         if len(self.balloons) != 3:
             self.balloons.add(Balloon(hp=random.randint(1, 3)))
 
-    def draw(self):
+    def draw(self) -> None:
         self.screen.fill("white")
         for balloon in self.balloons:
             balloon.draw(self.screen)

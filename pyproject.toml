@@ -12,7 +12,14 @@ dependencies = [
 dev = [
     "pygbag>=0.9.2",
     "pytest>=8.4.0",
+    "ruff>=0.11.13",
 ]
+
+[tool.ruff.lint]
+select = [
+    "ANN",  # Require return type annotations for public functions
+]  
+
 
 # This is required to use an editable installation of the `pygame-new` library,
 # which is required to use pytest in this configuration.

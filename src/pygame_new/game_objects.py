@@ -33,7 +33,7 @@ class Balloon(Sprite):
     """List of sprites to use for drawing different hp values."""
 
     @staticmethod
-    def setup_sprites(sprites: list[Surface]):
+    def setup_sprites(sprites: list[Surface]) -> None:
         """
         Globally defines the sprites for different hp values. If a list of
         sprites are provided and a balloon has some `hp`, the `hp - 1`th
@@ -47,7 +47,9 @@ class Balloon(Sprite):
         """
         Balloon._SPRITES = sprites
 
-    def __init__(self, hp: int, top: int | None = None, left: int | None = None):
+    def __init__(
+        self, hp: int, top: int | None = None, left: int | None = None
+    ) -> None:
         assert hp > 0
 
         Sprite.__init__(self)
@@ -71,7 +73,7 @@ class Balloon(Sprite):
         the mouse by setting the topleft to mouse + (x,y). None if we are not
         dragging."""
 
-    def handle_event(self, e: Event, mousex: int, mousey: int):
+    def handle_event(self, e: Event, mousex: int, mousey: int) -> None:
         """
         Updates the Balloon's state, given an event and the current mouse position.
 
@@ -104,7 +106,7 @@ class Balloon(Sprite):
         if e.type == MOUSEBUTTONUP:
             self._dragging_offset = None
 
-    def draw(self, screen: Surface):
+    def draw(self, screen: Surface) -> None:
         """
         Draws this balloon onto the given screen.
 

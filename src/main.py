@@ -2,7 +2,7 @@ from pygame_new import Game
 import asyncio
 
 
-async def main():
+async def main() -> None:
     await Game().run()
 
 
