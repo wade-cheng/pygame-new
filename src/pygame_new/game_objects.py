@@ -1,3 +1,8 @@
+"""Describes objects that appear in this game.
+
+For this example program, a single `Balloon` class is defined.
+"""
+
 from pygame import Surface, Rect, Event, MOUSEBUTTONDOWN, MOUSEBUTTONUP
 from pygame.sprite import Sprite
 import random
@@ -6,8 +11,7 @@ from pygame_new.constants import WINDOW_HEIGHT, WINDOW_WIDTH
 
 
 class Balloon(Sprite):
-    """
-    A balloon that can be spawned with health points at an arbitrary location.
+    """A balloon that can be spawned with health points at an arbitrary location.
 
     # Preconditions
 
@@ -34,13 +38,12 @@ class Balloon(Sprite):
 
     @staticmethod
     def setup_sprites(sprites: list[Surface]) -> None:
-        """
-        Globally defines the sprites for different hp values. If a list of
-        sprites are provided and a balloon has some `hp`, the `hp - 1`th
-        (zero-indexed) sprite is used to draw the balloon.
+        """Globally defines the sprites for different hp values.
 
-        This implies if the balloon is drawn, `hp` must always be greater than
-        zero and less than the length of an existing given sprite list.
+        If a list of sprites are provided and a balloon has some `hp`, the `hp - 1`th
+        (zero-indexed) sprite is used to draw the balloon. This implies if the balloon
+        is drawn, `hp` must always be greater than zero and less than the length of an
+        existing given sprite list.
 
         Calling the function more than once is allowed and swaps all balloons
         to the new sprite list.
@@ -50,6 +53,7 @@ class Balloon(Sprite):
     def __init__(
         self, hp: int, top: int | None = None, left: int | None = None
     ) -> None:
+        """Initialize a Balloon."""
         assert hp > 0
 
         Sprite.__init__(self)
@@ -74,8 +78,7 @@ class Balloon(Sprite):
         dragging."""
 
     def handle_event(self, e: Event, mousex: int, mousey: int) -> None:
-        """
-        Updates the Balloon's state, given an event and the current mouse position.
+        """Update the Balloon's state, given an event and the current mouse position.
 
         This function assumes mouse down and up events can only alternate.
         """
@@ -107,8 +110,7 @@ class Balloon(Sprite):
             self._dragging_offset = None
 
     def draw(self, screen: Surface) -> None:
-        """
-        Draws this balloon onto the given screen.
+        """Draw this balloon onto the given screen.
 
         See preconditions described in `Balloon`.
         """
