@@ -18,22 +18,28 @@ dev = [
 
 [tool.ruff.lint]
 select = [
-    "ANN",  # Require return type annotations for public functions
-    "D", # Enable docstring rules
+    "ANN",  # Require return type annotations for public functions.
+    "D", # Enable docstring rules.
+]
+
+# Ignore some lints that conflict with others.
+ignore = [
+    "D203",
+    "D213",
 ]
 
 # Enable the docstring line length check
 extend-select = ["W505"]
+
+[tool.ruff.lint.pycodestyle]
+# max line length for docstrings
+max-doc-length = 88
 
 [tool.ruff.lint.per-file-ignores]
 # Disable all docstring rules for tests.
 # Tests should have pretty descriptive naming already. 
 # See Unit Testing Principles, Practices, and Patterns (ISBN-13 978-1617296277)
 "tests/*" = ["D"]
-
-[tool.ruff.lint.pycodestyle]
-# max line length for docstrings
-max-doc-length = 88
 
 # This is required to use an editable installation of the `pygame-new` library,
 # which is required to use pytest in this configuration.
