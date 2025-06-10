@@ -23,6 +23,7 @@ uv run pytest
 
 # lint
 uv run ruff check
+uv run mypy src tests
 
 # format
 uv run ruff format
