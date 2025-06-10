@@ -45,6 +45,11 @@ that can be helpful for understanding this example project.
   - a configuration file that describes a python project
   - analogous to `Cargo.toml` (Rust) or `package.json` (npm)
   - ours specifies lints, dependencies (i.e. what's in the venv), a build system (to enable pytest), and other metadata
+- python version management
+  - the `.python-version` file specifies which version of python should be used during development
+  - the `project.requires-python` field in `pyproject.toml` specifies which versions of python are supported by the project.
+  - this project uses `requires-python = ">=3.10"` to support structural pattern matching. it does not specify a `.python-version`.
+  - see https://discuss.python.org/t/standardize-python-version-file-in-pyproject-toml/86342/18
 
 ### Linting
 
