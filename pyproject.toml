@@ -18,7 +18,7 @@ dev = [
 
 [tool.ruff.lint]
 select = [
-    "ANN",  # Require return type annotations for public functions.
+    "ANN",  # Require type annotations.
     "D", # Enable docstring rules.
 ]
 
