@@ -243,8 +243,8 @@ wheels = [
 
 [[package]]
 name = "saffron-debug"
-version = "1.0.1"
-source = { git = "https://github.com/wade-cheng/saffron-debug.git#bc7cc38521da89a4e99adde6939c54ab154bd42f" }
+version = "1.0.2"
+source = { git = "https://github.com/wade-cheng/saffron-debug.git#9dfed2b0b827be4b8a34ad27b44284d03c33be2a" }
 
 [[package]]
 name = "tomli"
