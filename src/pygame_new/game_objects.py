@@ -6,7 +6,7 @@ For this example program, a single `Balloon` class is defined.
 from sdbg import dprint
 
 import pygame
-from pygame import Surface, Rect, Event
+from pygame import Surface, Rect, Event, Vector2
 from pygame.sprite import Sprite
 import random
 
@@ -31,9 +31,9 @@ class Balloon(Sprite):
     # a click will drag or hurt it. That is, they encode an offset and a size.
     # These are currently hardcoded values chosen to accompany the balloon image
     # in `pygame-new/src/assets`.
-    _DRAGBOX_OFFSET = (6, 20)
+    _DRAGBOX_OFFSET = Vector2(6, 20)
     _DRAGBOX = Rect(0, 0, 4, 19).move(*_DRAGBOX_OFFSET)
-    _HURTBOX_OFFSET = (0, 0)
+    _HURTBOX_OFFSET = Vector2(0, 0)
     _HURTBOX = Rect(0, 0, 16, 20).move(*_HURTBOX_OFFSET)
 
     _SPRITES: list[Surface] | None = None
@@ -54,7 +54,7 @@ class Balloon(Sprite):
         Balloon._SPRITES = sprites
 
     def __init__(
-        self, hp: int, top: int | None = None, left: int | None = None
+        self, hp: int, top: int | float | None = None, left: int | float | None = None
     ) -> None:
         """Initialize a Balloon."""
         assert hp > 0
