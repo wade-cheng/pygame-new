@@ -81,15 +81,14 @@ class Game:
 
     def update(self) -> None:
         """Run the update step of the game loop."""
-        x, y = pygame.mouse.get_pos()
-
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.running = False
                 return
 
             for balloon in self.balloons:
-                balloon.handle_event(event, x, y)
+                balloon: Balloon
+                balloon.handle_event(event)
 
         if len(self.balloons) != 3:
             self.balloons.add(Balloon(hp=random.randint(1, 3)))

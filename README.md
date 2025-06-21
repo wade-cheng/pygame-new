@@ -12,9 +12,13 @@ After installation, try out some commands:
 ```
 # run this game in your browser
 uv run pygbag --icon src/assets/favicon.png src/main.py
+# enable debug logging
+uv run --env-file .env.development pygbag --icon src/assets/favicon.png src/main.py
 
 # run this game traditionally
 cd src; uv run main.py; cd ..
+# enable debug logging
+cd src; uv run --env-file ../.env.development main.py; cd ..
 
 # run the unit tests
 uv run pytest -v

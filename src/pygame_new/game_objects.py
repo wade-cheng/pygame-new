@@ -3,7 +3,9 @@
 For this example program, a single `Balloon` class is defined.
 """
 
-from pygame import Surface, Rect, Event, MOUSEBUTTONDOWN, MOUSEBUTTONUP
+from sdbg import dprint
+
+from pygame import Surface, Rect, Event, MOUSEBUTTONDOWN, MOUSEBUTTONUP, MOUSEMOTION
 from pygame.sprite import Sprite
 import random
 
@@ -77,37 +79,37 @@ class Balloon(Sprite):
         the mouse by setting the topleft to mouse + (x,y). None if we are not
         dragging."""
 
-    def handle_event(self, e: Event, mousex: int, mousey: int) -> None:
+    def handle_event(self, e: Event) -> None:
         """Update the Balloon's state, given an event and the current mouse position.
 
         This function assumes mouse down and up events can only alternate.
         """
-        if e.type == MOUSEBUTTONDOWN:
-            # if the balloon's hurtbox touches the mouse
-            if Balloon._HURTBOX.move(self._left, self._top).collidepoint(
-                mousex, mousey
-            ):
-                self._hp -= 1
-                if self._hp == 0:
-                    self.kill()
-            # if the balloon's dragbox touches the mouse
-            elif Balloon._DRAGBOX.move(self._left, self._top).collidepoint(
-                mousex, mousey
-            ):
-                self._dragging_offset = (
-                    self._left - mousex,
-                    self._top - mousey,
-                )
+        match e:
+            case Event(type=MOUSEBUTTONDOWN, pos=(x, y)):
+                dprint("mbd'd (should happen thrice (once per balloon) per click)")
 
-        match self._dragging_offset:
-            case (xoffset, yoffset):
-                self._left = xoffset + mousex
-                self._top = yoffset + mousey
+                # if the balloon's hurtbox touches the mouse
+                if Balloon._HURTBOX.move(self._left, self._top).collidepoint(x, y):
+                    self._hp -= 1
+                    if self._hp == 0:
+                        self.kill()
+                # if the balloon's dragbox touches the mouse
+                elif Balloon._DRAGBOX.move(self._left, self._top).collidepoint(x, y):
+                    self._dragging_offset = (
+                        self._left - x,
+                        self._top - y,
+                    )
+            case Event(type=MOUSEBUTTONUP):
+                self._dragging_offset = None
+            case Event(type=MOUSEMOTION, pos=(x, y)):
+                match self._dragging_offset:
+                    case (xoffset, yoffset):
+                        self._left = xoffset + x
+                        self._top = yoffset + y
+                    case None:
+                        pass
             case _:
                 pass
-
-        if e.type == MOUSEBUTTONUP:
-            self._dragging_offset = None
 
     def draw(self, screen: Surface) -> None:
         """Draw this balloon onto the given screen.
