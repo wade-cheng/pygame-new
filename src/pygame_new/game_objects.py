@@ -5,7 +5,8 @@ For this example program, a single `Balloon` class is defined.
 
 from sdbg import dprint
 
-from pygame import Surface, Rect, Event, MOUSEBUTTONDOWN, MOUSEBUTTONUP, MOUSEMOTION
+import pygame
+from pygame import Surface, Rect, Event, MOUSEBUTTONUP, MOUSEMOTION
 from pygame.sprite import Sprite
 import random
 
@@ -85,7 +86,7 @@ class Balloon(Sprite):
         This function assumes mouse down and up events can only alternate.
         """
         match e:
-            case Event(type=MOUSEBUTTONDOWN, pos=(x, y)):
+            case Event(type=pygame.MOUSEBUTTONDOWN, pos=(x, y)):
                 dprint("mbd'd (should happen thrice (once per balloon) per click)")
 
                 # if the balloon's hurtbox touches the mouse
