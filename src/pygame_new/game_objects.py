@@ -6,7 +6,7 @@ For this example program, a single `Balloon` class is defined.
 from sdbg import dprint
 
 import pygame
-from pygame import Surface, Rect, Event, MOUSEBUTTONUP, MOUSEMOTION
+from pygame import Surface, Rect, Event
 from pygame.sprite import Sprite
 import random
 
@@ -100,9 +100,9 @@ class Balloon(Sprite):
                         self._left - x,
                         self._top - y,
                     )
-            case Event(type=MOUSEBUTTONUP):
+            case Event(type=pygame.MOUSEBUTTONUP):
                 self._dragging_offset = None
-            case Event(type=MOUSEMOTION, pos=(x, y)):
+            case Event(type=pygame.MOUSEMOTION, pos=(x, y)):
                 match self._dragging_offset:
                     case (xoffset, yoffset):
                         self._left = xoffset + x
