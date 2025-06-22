@@ -3,8 +3,6 @@
 For this example program, a single `Balloon` class is defined.
 """
 
-from sdbg import dprint
-
 import pygame
 from pygame import Surface, Rect, Event, Vector2
 from pygame.sprite import Sprite
@@ -87,8 +85,6 @@ class Balloon(Sprite):
         """
         match e:
             case Event(type=pygame.MOUSEBUTTONDOWN, pos=(x, y)):
-                dprint("mbd'd (should happen thrice (once per balloon) per click)")
-
                 # if the balloon's hurtbox touches the mouse
                 if Balloon._HURTBOX.move(self._left, self._top).collidepoint(x, y):
                     self._hp -= 1

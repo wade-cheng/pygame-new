@@ -6,7 +6,6 @@ readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
     "pygame-ce>=2.5.3",
-    "saffron-debug>= 1.0.0",
 ]
 
 [dependency-groups]
@@ -41,9 +40,6 @@ max-doc-length = 88
 # Tests should have pretty descriptive naming already. 
 # See Unit Testing Principles, Practices, and Patterns (ISBN-13 978-1617296277)
 "tests/*" = ["D"]
-
-[tool.uv.sources]
-saffron-debug = { git = "https://github.com/wade-cheng/saffron-debug.git" }
 
 # This is required to use an editable installation of the `pygame-new` library,
 # which is required to use pytest in this configuration.
